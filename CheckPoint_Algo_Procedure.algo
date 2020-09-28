@@ -1,0 +1,59 @@
+// procedure to read the 2 vector with n pair
+PROCEDURE readVector(n :INTEGER,VAR V1:ARRAY_OF INTEGER[20],VAR V2:ARRAY_OF INTEGER[20])
+VAR
+    i: INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 DO
+        read(V1[i]);
+        read(V2[i]);
+    END_FOR
+END
+// function that returns the dot_product in ps variable
+FUNCTION dot_product(n :INTEGER,VAR V1:ARRAY_OF INTEGER[20],VAR V2:ARRAY_OF INTEGER[20]):INTEGER
+VAR
+    ps: INTEGER :=0;
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1  DO
+        ps:= ps + v1[i] * v2[i];
+    END_FOR
+    RETURN ps ;
+END
+// procedure that returns the do_product
+PROCEDURE dot_product(VAR n :INTEGER,VAR V1:ARRAY_OF INTEGER[20],VAR V2:ARRAY_OF INTEGER[20])
+VAR
+    ps: INTEGER :=0;
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1  DO
+        ps:= ps + v1[i] * v2[i];
+    END_FOR
+    Write ("Do_product of 2 vector equals :="+ps);
+END
+// procedure that returns TRUE if the Vectors are orthogonal Otherwise FALSE
+PROCEDURE orthogonal(n:INTEGER) 
+BEGIN
+    IF (n := 0) THEN
+        Write("Vectors are Orthogonal");
+        ELSE 
+        Write("Vectors are NOT Orthogona");
+    END_IF
+END
+
+ALGORITHM algorithm_dot_products
+VAR
+    number : INTEGER;
+    Vector1 :ARRAY_OF INTEGER[20];
+    Vector2 :ARRAY_OF INTEGER[20];
+    ps : INTEGER;
+BEGIN
+    Write("Write n pair of Vectors");
+    Read(number);
+    // call the procedure "readVector" to Read Vector 1 and Vector 2 
+    readVector(number,Vector1,Vector2);
+    // call the function "dot_product" to return the ps value 
+    ps := dot_product(number,Vector1,Vector2);
+    Write(ps);
+    // call the procedure to check if vector are orthogonal or not 
+    orthogonal(ps);
+END
